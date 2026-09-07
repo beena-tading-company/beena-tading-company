@@ -11,7 +11,7 @@ app.use(express.json());
 // Website की files चलाने के लिए
 app.use(express.static(__dirname));
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Orders रखने वाली file
 const ordersFile = path.join(__dirname, "orders.json");
@@ -106,7 +106,7 @@ app.put("/api/orders/:id/status", (req, res) => {
 });
 
 // Server start
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(
         `Beena Trading Company running at http://localhost:${PORT}`
     );
